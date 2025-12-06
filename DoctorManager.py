@@ -3,16 +3,13 @@ from Doctor import Doctor
 class DoctorManager:
 
     def __init__(self):
-        """Initialize empty list of doctors and load from file."""
         self.doctors = []
         self.read_doctors_file()
     
     def format_dr_info(self, doctor):
-        """Format doctor object information for file storage."""
         return str(doctor)
     
     def enter_dr_info(self):
-        """Prompt user to enter doctor information and return doctor object."""
         doctor_id = input("Enter the doctor's ID: ")
         name = input("Enter the doctor's name: ")
         speciality = input("Enter the doctor's specility: ")
@@ -23,7 +20,6 @@ class DoctorManager:
         return Doctor(doctor_id, name, speciality, timing, qualification, room_number)
     
     def read_doctors_file(self):
-        """Read doctors data from doctors.txt and create doctor objects."""
         try:
             with open("doctors.txt", "r") as file:
                 lines = file.readlines()
@@ -41,7 +37,6 @@ class DoctorManager:
             pass
     
     def search_doctor_by_id(self):
-        """Search for a doctor by ID and display information."""
         doctor_id = input("\nEnter the doctor Id: ")
         
         found = False
@@ -55,7 +50,6 @@ class DoctorManager:
             print("Can't find the doctor with the same ID on the system\n")
     
     def search_doctor_by_name(self):
-        """Search for a doctor by name and display information."""
         name = input("\nEnter the doctor name: ")
         
         found = False
@@ -69,7 +63,6 @@ class DoctorManager:
             print("Can't find the doctor with the same name on the system\n")
     
     def display_doctor_info(self, doctor):
-        """Display formatted doctor information."""
         print("\n{:<5}{:<23}{:<16}{:<16}{:<16}{:<16}".format("Id", "Name", "Speciality", "Timing", "Qualification", "Room Number"))
         print()
         print("{:<5}{:<23}{:<16}{:<16}{:<16}{:<16}".format(
@@ -83,7 +76,6 @@ class DoctorManager:
         print()
     
     def edit_doctor_info(self):
-        """Edit existing doctor information."""
         doctor_id = input("\nPlease enter the id of the doctor that you want to edit their information: ")
         
         found = False
@@ -110,7 +102,6 @@ class DoctorManager:
             print("Cannot find the doctor with the same ID on the system\n")
     
     def display_doctors_list(self):
-        """Display all doctors in formatted table."""
         print("{:<5}{:<23}{:<16}{:<16}{:<16}{:<16}".format("Id", "Name", "Speciality", "Timing", "Qualification", "Room Number"))
         print()
         
@@ -126,7 +117,6 @@ class DoctorManager:
             print()
     
     def write_list_of_doctors_to_file(self):
-        """Write all doctors to doctors.txt file."""
         with open("doctors.txt", "w") as file:
             file.write("id_name_specilist_timing_qualification_roomNb\n")
             for doctor in self.doctors:
@@ -134,7 +124,6 @@ class DoctorManager:
                 file.write(formatted + "\n")
     
     def add_dr_to_file(self):
-        """Add a new doctor to the system."""
         new_doctor = self.enter_dr_info()
         self.doctors.append(new_doctor)
         

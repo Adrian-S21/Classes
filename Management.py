@@ -4,12 +4,10 @@ from PatientManager import PatientManager
 class Management:
     
     def __init__(self):
-        """Initialize doctor and patient managers."""
         self.doctor_manager = DoctorManager()
         self.patient_manager = PatientManager()
     
     def display_menu(self):
-        """Display main menu and handle user navigation."""
         while True:
             print("Welcome to Alberta Hospital (AH) Managment system ")
             print("Select from the following options, or select 3 to stop: ")
@@ -30,7 +28,6 @@ class Management:
                 print("Invalid choice. Please try again.\n")
     
     def doctors_menu(self):
-        """Display and handle doctors submenu."""
         while True:
             print("\nDoctors Menu:")
             print("1 - Display Doctors list")
@@ -60,7 +57,6 @@ class Management:
                 print("Invalid choice. Please try again.\n")
     
     def patients_menu(self):
-        """Display and handle patients submenu."""
         while True:
             print("\nPatients Menu:")
             print("1 - Display patients list")

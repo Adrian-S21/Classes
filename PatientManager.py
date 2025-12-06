@@ -1,22 +1,15 @@
 from Patient import Patient
 
 class PatientManager:
-    """
-    PatientManager class to manage all patient operations.
-    Handles reading, writing, searching, adding, and editing patients.
-    """
-    
+
     def __init__(self):
-        """Initialize empty list of patients and load from file."""
         self.patients = []
         self.read_patients_file()
     
     def format_patient_info_for_file(self, patient):
-        """Format patient object information for file storage."""
         return str(patient)
     
     def enter_patient_info(self):
-        """Prompt user to enter patient information and return patient object."""
         pid = input("Enter Patient id: ")
         name = input("Enter Patient name: ")
         disease = input("Enter Patient disease: ")
@@ -26,7 +19,6 @@ class PatientManager:
         return Patient(pid, name, disease, gender, age)
     
     def read_patients_file(self):
-        """Read patients data from patients.txt and create patient objects."""
         try:
             with open("patients.txt", "r") as file:
                 lines = file.readlines()
@@ -44,7 +36,6 @@ class PatientManager:
             pass
     
     def search_patient_by_id(self):
-        """Search for a patient by ID and display information."""
         pid = input("\nEnter the Patient Id: ")
         
         found = False
@@ -58,7 +49,6 @@ class PatientManager:
             print("Can't find the Patient with the same id on the system\n")
     
     def display_patient_info(self, patient):
-        """Display formatted patient information."""
         print("\n{:<5}{:<23}{:<16}{:<16}{:<16}".format("ID", "Name", "Disease", "Gender", "Age"))
         print()
         print("{:<5}{:<23}{:<16}{:<16}{:<16}".format(
@@ -71,7 +61,6 @@ class PatientManager:
         print()
     
     def edit_patient_info_by_id(self):
-        """Edit existing patient information."""
         pid = input("\nPlease enter the id of the Patient that you want to edit their information: ")
         
         found = False
@@ -96,7 +85,6 @@ class PatientManager:
             print("Cannot find the patient with the same ID on the system\n")
     
     def display_patients_list(self):
-        """Display all patients in formatted table."""
         print("{:<5}{:<23}{:<16}{:<16}{:<16}".format("ID", "Name", "Disease", "Gender", "Age"))
         print()
         
@@ -111,7 +99,6 @@ class PatientManager:
             print()
     
     def write_list_of_patients_to_file(self):
-        """Write all patients to patients.txt file."""
         with open("patients.txt", "w") as file:
             file.write("id_Name_Disease_Gender_Age\n")
             for patient in self.patients:
@@ -119,7 +106,6 @@ class PatientManager:
                 file.write(formatted + "\n")
     
     def add_patient_to_file(self):
-        """Add a new patient to the system."""
         new_patient = self.enter_patient_info()
         self.patients.append(new_patient)
         
