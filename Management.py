@@ -21,7 +21,7 @@ class Management:
                 self.doctors_menu()
             elif choice == "2":
                 self.patients_menu()
-            elif choice == "3":
+            elif choice == "3" or choice == "0":
                 print("Thanks for using the program. Bye!")
                 break
             else:
